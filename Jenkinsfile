@@ -64,6 +64,18 @@ pipeline {
         }
     }
 }
+
+        stage('Deploy MongoDB Container') {
+            steps {
+                script {
+                    // Change directory to where docker-compose.yml is located
+                    dir('/var/lib/jenkins/workspace/my_nextjs_app') {
+                        // Run docker-compose up to deploy MongoDB container
+                        sh 'docker-compose up -d'
+                    }
+                }
+            }
+        }
         
         
 
