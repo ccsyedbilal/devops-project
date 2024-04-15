@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage("checkout"){
       steps{
-        check nextjs
+        check scm
       }
     }
 
