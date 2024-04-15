@@ -77,7 +77,14 @@ pipeline {
                 }
             }
         }
-        
+
+        stage('Copy .env.sample to .env') {
+    steps {
+        script {
+            sh 'cp .env.sample .env'
+        }
+    }
+}
         
 
         // Add more stages as needed
