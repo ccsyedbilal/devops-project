@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage("checkout"){
-            steps{
-              checkout scm
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
         }
-    
+
         stage('Install Dependencies') {
             steps {
                 script {
@@ -26,7 +27,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Test') {
             steps {
                 // Your testing steps here
