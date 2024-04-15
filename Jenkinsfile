@@ -1,26 +1,26 @@
 pipeline {
-  agent {
-    docker {
-      image 'your-jenkins-image'
-      args '-v /var/run/docker.sock:/var/run/docker.sock' // Mount the Docker socket
-    }
-  }
+  agent any
   stages {
-    stage("Test") {
-      steps {
-        script {
-          // Use Docker to install packages on the host machine
-          sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock debian apt update && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock debian apt install -y nodejs npm unzip'
-          sh 'curl -fsSL https://bun.sh/install | bash'
-          sh 'npm install -g bun'
-        }
+    stage("checkout"){
+      steps{
+        check scm
       }
     }
 
-    stage("build") {
-      steps {
+    stage("Test"){
+      steps{
+        sh 'sudo apt install nodejs && sudo apt install npm'
+        sh 'sudo apt install unzip'
+        sh 'curl -fsSL https://bun.sh/install | bash'
+        sh 'npm install -g bun'
+      }
+    }
+
+    stage("build"){
+      steps{
         sh 'bun run build'
-      } 
+      }
+      
     }
   }
 }
