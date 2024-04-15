@@ -16,10 +16,13 @@ pipeline {
       }
     }
 
-    stage("build"){
-      steps{
-        sh 'bun run build'
-      }
+    stage('Build') {
+            steps {
+                dir('/var/lib/jenkins/workspace/my_nextjs_app') {
+                    sh 'bun run build'
+                }
+            }
+        }
       
     }
   }
