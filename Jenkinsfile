@@ -47,6 +47,17 @@ pipeline {
     }
 }
 
+        stage('Testing') {
+    steps {
+        // Assuming you're using npm to run tests, replace with your actual testing commands
+        sh 'bun test'
+        
+        // If you have additional tests or commands, you can add them here
+    }
+}
+
+
+      
         
         
 
