@@ -57,13 +57,13 @@ pipeline {
 }
 
 
-        stage('install Dependencies for next-app') {
-            steps {
-                dir('/var/lib/jenkins/workspace/my_nextjs_app') {
-                    sh 'bun run build'
-                }
-            }
+        stage('Install Dependencies for next-app') {
+    steps {
+        dir('/var/lib/jenkins/workspace/my_nextjs_app') {
+            sh 'bun install'
         }
+    }
+}
         
         
 
