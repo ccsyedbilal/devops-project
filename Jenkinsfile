@@ -85,7 +85,14 @@ pipeline {
         }
     }
 }
-        
+
+        stage('dev build') {
+    steps {
+        script {
+            sh 'bun run dev'
+        }
+    }
+}
 
         // Add more stages as needed
     }
