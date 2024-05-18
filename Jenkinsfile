@@ -89,7 +89,7 @@ pipeline {
         stage('dev build') {
     steps {
         script {
-            sh 'bun test'
+            sh 'bun run dev'
         }
     }
 }
